@@ -1,5 +1,5 @@
 {
     "version": 2,
-    "build": [{"src": "./server.js", "use":"@versel/node"}],
-    "routes": [{"src":"/(.*)","dest":"/api/data"}]
+    "build": [{"src": "./index.js", "use":"@versel/node"}],
+    "routes": [{"src":"/(.*)","dest":"/api"}]
 }

@@ -22,7 +22,7 @@ const Data = mongoose.model('Data', dataSchema);
 app.use(bodyParser.json());
 
 // Store data
-app.post('/api/data', async (req, res) => {
+app.post('/', async (req, res) => {
   try {
     const newData = new Data({
       ppm: req.body.ppm,
@@ -38,7 +38,7 @@ app.post('/api/data', async (req, res) => {
 }); 
 
 // Get all data
-app.get('/api/data', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const values = await Data.find().sort({ timestamp: -1 }).limit(10);
     res.send(values);

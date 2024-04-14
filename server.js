@@ -1,10 +1,19 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import connectMongoDB from './db';
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+const connectMongoDB = async () => {
+  try {
+      const MONGO_DBURI = 'mongodb+srv://mehdielgoummadi:JI6YJzI5fhdY7r0E@cluster0.4zlbhyc.mongodb.net/add-value?retryWrites=true&w=majority&appName=Cluster0';
+      await mongoose.connect(MONGO_DBURI);
+      console.log("Connected to MongoDB");
+  } catch (error) {
+      console.error("Error connecting to MongoDB: ", error);
+  } 
+}; 
 
 // Schema
 const dataSchema = new mongoose.Schema({

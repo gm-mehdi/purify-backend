@@ -4,14 +4,14 @@ import bodyParser from 'body-parser';
 import connectMongoDB from './db';
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 // Schema
 const dataSchema = new mongoose.Schema({
   ppm: Number,
   humidity: Number,
   temperature: Number,
-  pressure: Number,
+  gaz_ratio : Number,
   timestamp: { type: Date, default: Date.now }
 });
 
@@ -28,7 +28,7 @@ app.post('/', async (req, res) => {
       ppm: req.body.ppm,
       humidity: req.body.humidity,
       temperature: req.body.temperature,
-      pressure: req.body.pressure
+      gaz_ratio: req.body.gaz_ratio
     });
     await newData.save();
     res.status(201).send(newData);
